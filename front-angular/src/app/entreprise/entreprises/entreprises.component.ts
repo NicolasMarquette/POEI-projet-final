@@ -26,6 +26,9 @@ export class EntreprisesComponent implements OnInit {
   constructor(private srv : SrvEntrepriseService, private router : Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("currentUser")==null){
+      this.router.navigate(['/appcarousel']);
+    }
   }
 
   afficherAll(){

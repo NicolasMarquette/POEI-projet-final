@@ -1,10 +1,11 @@
 <div class="container col-8">
+<br>
+<br>
+    <div class="display-5 text-center"
+    style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">{{nomentreprise}} vous alloue ses services de {{profession}}
+    </div><br><br>
 
-    <button (click)="afficherAll()" class="btn btn-dark">Tout afficher</button><br><br>
-
-    <div class="container col-8 display-6 text-center">{{nomentreprise}} vous alloue ses services de {{profession}}</div><br>
-
-    <section>
+    <!-- <section>
         <p *ngIf="client == null || client == '' " class="text-danger">
             Veuillez entrer votre nom pour commencer vos achats :)
         </p>
@@ -12,7 +13,7 @@
             <label for="client">SAISIR VOTRE NOM:</label>
             <input type="text" name="client" [(ngModel)]="client" class="form-control">
         </div>
-    </section>
+    </section> -->
 
     <table class="table">
         <thead>
@@ -20,42 +21,38 @@
                 <th>Prestation</th>
                 <th>Tarif</th>
                 <th>Quantité</th>
-                <th></th>            
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let c of listeLignePrestations">
                 <td> {{c.prestation.prestation}}</td>
                 <td> {{c.prestation.tarif}}</td>
-                <td> <input type="number" class="form-control" id="quantite" placeholder="0" name="quantite" [(ngModel)]="c.quantite"></td>
-                <td> <button (click)="select(c)" class="btn btn-dark">Ajouter cette prestation</button></td>                
+                <td> <input type="number" class="form-control" id="quantite" placeholder="0" name="quantite"
+                        [(ngModel)]="c.quantite"></td>
+                <td> <button (click)="select(c)" class="btn btn-dark">Ajouter cette prestation</button></td>
             </tr>
         </tbody>
     </table>
 
     <section *ngIf="panier.listLignePresta.length > 0" class="mt-4">
-        <p class="h5">{{client}} voici votre panier</p>
+        <p class="text-center"
+        style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: xx-large;">{{client}} voici votre panier</p>
         <ul class="list-group">
             <li *ngFor="let p of panier.listLignePresta" class="list-group-item col">
-                {{p.quantite}} x {{p.prestation.prestation}} à {{p.prestation.tarif}} pour un total de {{p.totalLigne}} euros.
+                <div class="row">
+                    <div class="col">
+                        {{p.quantite}} x {{p.prestation.prestation}} à {{p.prestation.tarif}} pour un total de
+                        {{p.totalLigne}} euros.
+                    </div>
+                    <div class="col d-flex flex-row-reverse">
+                        <button class="btn btn-danger" (click)="remove(p)">Supprimer</button>
+                    </div>
+                </div>
             </li>
         </ul>
 
-            <p class="h5">{{client}} voici votre panier</p>
-            <table class="table" *ngFor="let p of panier.listLignePresta">
-                <tr>
-                    <td>{{p.quantite}}</td>
-                    <td> x </td>
-                    <td>{{p.prestation.prestation}}</td>
-                    <td> à </td>
-                    <td>{{p.prestation.tarif}}</td>
-                    <td> pour un total de </td>
-                    <td>{{p.totalLigne}}</td>
-                    <td> euros.</td>
-                    <td><button class="btn btn-danger col" (click)="remove(p)">supprimer</button></td>
-                </tr>
-            </table>
-        
+
         <div class="row mt-4">
             <div class="col input-group">
                 <span class="input-group-text">Total du panier</span>

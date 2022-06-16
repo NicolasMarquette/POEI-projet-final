@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Entreprises } from 'src/app/entreprise/entreprises';
 import { LignePresta } from '../ligne-presta';
 import { PanierPresta } from '../panier-presta';
@@ -21,12 +22,17 @@ export class PrestationsComponent implements OnInit {
   client : string = "";
   panier : PanierPresta = new PanierPresta();
 
-  constructor(private srv : SrvprestationService) { 
+  constructor(private srv : SrvprestationService, private router : Router) { 
   }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("entreprise")==null){
+      this.router.navigate(['/entreprises']);
+    }
   
   let entreprise : Entreprises =  JSON.parse(sessionStorage.getItem("entreprise") || '') ;
+  let user = JSON.parse(sessionStorage.getItem("currentUser") || '')
+  this.client = user.username;
   this.profession = entreprise.profession; 
   this.nomentreprise = entreprise.entreprise; 
   this.adresseentreprise = entreprise.adresse;
@@ -94,6 +100,12 @@ export class PrestationsComponent implements OnInit {
 
   remove(p: LignePresta) {
     this.panier.removeArticle(p);
+  
+   if(this.panier.listLignePresta.length==0){
+    this.panier = new PanierPresta();
+   }
+   sessionStorage.setItem("panier", JSON.stringify(this.panier));
+   console.log(this.panier)
   }
 
 }
