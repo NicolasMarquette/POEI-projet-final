@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
-  }
 
+  }
+goLogin(){
+  this.router.navigate(['/login']); 
+}
+goSignUp(){
+  this.router.navigate(['/signup']); 
+}
+logout(){
+  this.router.navigate(['/logout']); 
+}
 }

@@ -12,22 +12,24 @@
                     <a routerLink="/appcarousel" class="nav-link px-2 text-white">Accueil</a>
                 </li>
                 <li>
-                    <a routerLink="/prestations" class="nav-link px-2 text-white"> 🛠 Nos prestations</a>
+                    <a routerLink="/app-prestations" class="nav-link px-2 text-white"> 🛠 Nos prestations</a>
                 </li>
                 <li>
                     <a routerLink="/prestataires" class="nav-link px-2 text-white">🌈 Nos Prestataires</a>
                 </li>
                 <li>
-                    <a routerLink="/appcontact" class="nav-link px-2 text-white">Nous contacter</a></li>
+                    <a routerLink="/appcontact" class="nav-link px-2 text-white">📩 Nous contacter</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search" />
+                <input type="search" class="form-control form-control-dark" placeholder="🔎 Rechercher..." aria-label="Search" />
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
+                <button type="button" class="btn btn-outline-light me-2 btn-warning" (click)="goLogin()">👨‍💼 Login</button>
+                <button type="button" class="btn btn-success me-2" (click)=" goSignUp() ">😀 Sign-up </button>
+                <button type="button " class="btn btn-danger " (click)="logout() ">👋 Logout </button>
+
             </div>
         </div>
     </div>
