@@ -13,6 +13,8 @@ import { EntreprisesComponent } from './entreprise/entreprises/entreprises.compo
 import { PrestationsComponent } from './prestation/prestations/prestations.component';
 import { SignupComponent } from './app-authorization/signup/signup.component';
 import { LoginComponent } from './app-authorization/login/login.component';
+import { AppPrestationsComponent } from './app-prestations/app-prestations.component';
+import { AppPrestatairesComponent } from './app-prestataires/app-prestataires.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { LoginComponent } from './app-authorization/login/login.component';
     AppcarouselComponent,
     LoginComponent,
     SignupComponent,
+    PrestationsComponent,
+    AppPrestationsComponent,
+    AppPrestatairesComponent
   ],
   imports: [
     BrowserModule,
